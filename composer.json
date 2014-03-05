@@ -1,0 +1,21 @@
+{
+    "name": "lukaswhite/uk-postcodes",
+    "description": "",
+    "authors": [
+        {
+            "name": "Lukas White",
+            "email": "hello@lukaswhite.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",        
+        "guzzle/guzzle": "3.8.*@dev",
+        "league/geotools"    : "~0.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Lukaswhite\\UkPostcodes": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
