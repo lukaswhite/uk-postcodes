@@ -49,4 +49,35 @@ class TestUkPostcodeClass extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('South Gloucestershire', $postcode->council->title);
 	}
 
+	/**
+	public function testGetPostTown()
+	{
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw11 5ds');		
+		var_dump($postcode->getPostTown());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('m4 4at');		
+		var_dump($postcode->getPostTown());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('hd1 4sq');		
+		var_dump($postcode->getPostTown());
+	}
+	**/
+
+	public function testFormatting()
+	{
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw11 5ds');		
+		$this->assertEquals('SW11 5DS', $postcode->formatted());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw115ds');		
+		$this->assertEquals('SW11 5DS', $postcode->formatted());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('m45as');		
+		$this->assertEquals('M4 5AS', $postcode->formatted());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw1a 2aa');		
+		$this->assertEquals('SW1A 2AA', $postcode->formatted());
+
+		
+	}
+
 }
