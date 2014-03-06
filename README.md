@@ -39,7 +39,7 @@ Alternatively, use the static method:
 
     // > "SW1A 2AA"
 
-##Outcodes
+###Outcodes
 
 The outcode is the first part of a UK postcode. To illustrate:
 
