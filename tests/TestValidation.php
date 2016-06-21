@@ -51,4 +51,18 @@ class TestValidation extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($postcode->isValid());	
 	}
 
+	/**
+	 * Validate a whole stack of postcodes
+	 */
+	public function testMultiple()
+	{
+		if (($handle = fopen(__DIR__."/fixtures/postcodes.csv", "r")) !== FALSE) {
+	    while (($data = fgetcsv($handle, 50, ",")) !== FALSE) {
+				$postcode = new Lukaswhite\UkPostcodes\UkPostcode( $data[ 0 ] );
+				$this->assertTrue($postcode->isValid());
+	    }
+	    fclose($handle);
+		}
+	}
+
 }
