@@ -8,24 +8,95 @@
 class UkPostcode {
 
 	/**
+	 * String representation of the postcode
+	 * 
+	 * @var string
+	 */	
+	public $postcode;
+
+	/**
+	 * The latitude
+	 * 
+	 * @var float
+	 */
+	private $lat;
+
+	/**
+	 * The longitude
+	 * 
+	 * @var float
+	 */
+	private $lng;
+
+	/**
+	 * The Easting
+	 * 
+	 * @var integer
+	 */
+	private $easting;
+
+	/**
+	 * The Northing
+	 * 
 	 * @var string
 	 */
-	public $postcode;
-	private $lat;
-	private $lng;
-	private $easting;
 	private $nothing;
+
+	/**
+	 * The Geohash (ref: https://en.wikipedia.org/wiki/Geohash)
+	 * 
+	 * @var string
+	 */
 	public $geohash;
+
+	/**
+	 * The name of the council
+	 * 
+	 * @var string
+	 */
 	public $council;
+
+	/**
+	 * The name of the ward
+	 * 
+	 * @var string
+	 */
 	public $ward;
+
+	/**
+	 * The name of the parliamentary consistency
+	 * 
+	 * @var string
+	 */
 	public $constituency;
 
+	/**
+	 * The path to the postcode data file
+	 * 
+	 * @var string
+	 */
 	private static $databasePath;
-	// define the field lengths in the database
-  const DISTRICT_LENGTH  = 4;
-  const POST_TOWN_LENGTH = 22;
-  const RECORD_LENGTH    = 26;
+	
+	/**
+	 * Field lengths, used to interpret the data file
+	 */
+	const DISTRICT_LENGTH  = 4;
+	const POST_TOWN_LENGTH = 22;
+	const RECORD_LENGTH    = 26;
 
+	/**
+	 * Constructor
+	 *
+	 * Create an instance by providing a string representation of the postcode; it's fairly lax about the format.
+	 * So in other words, it'll accept any of the following:
+	 *
+	 *   GL9 1AH
+	 *   gl91ah
+	 *   Gl91Ah
+	 *   gl  9 1 a    h
+	 *   
+	 * @param string $postcode
+	 */
 	public function __construct($postcode)
 	{
 		$this->postcode = $postcode;
@@ -174,6 +245,33 @@ class UkPostcode {
     // The outcode is the postcode less the last three characters
     return substr($formatted_postcode, 0, (strlen($formatted_postcode) - 3));       
     
+	}
+
+	/**
+	 * Returns the inward code
+	 * 
+	 * @return string
+	 */
+	public function getInwardCode()
+	{
+		// Format the postcode first		
+    $formatted_postcode = strtoupper(str_replace(' ', '', $this->postcode));
+
+    // Get the last three characters
+    return substr($formatted_postcode, (strlen($formatted_postcode) - 3));       
+	}
+
+	/**
+	 * Get the postcode sector
+	 *
+	 * e.g. GL9 1 	 
+	 * 
+	 * @return string
+	 */
+	public function getSector()
+	{
+		// The sector is simply outcode + space + first digit of the inward code
+		return sprintf( '%s %s', $this->getOutcode(), substr( $this->getInwardCode(), 0, 1 ) );
 	}
 
 	/**

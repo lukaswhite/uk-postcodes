@@ -22,6 +22,32 @@ class TestUkPostcodeClass extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test the getInwardCode() function
+	 */
+	public function testGetInwardCode()
+	{
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('GL9 1AH');	
+		$this->assertEquals('1AH', $postcode->getInwardCode());
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw11 5ds');		
+		$this->assertEquals('5DS', $postcode->getInwardCode());
+
+	}
+
+	/**
+	 * Test the getSector() function
+	 */
+	public function testGetSector()
+	{
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('GL9 1AH');	
+		$this->assertEquals('GL9 1', $postcode->getSector());		
+
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw11 5ds');		
+		$this->assertEquals('SW11 5', $postcode->getSector());		
+
+	}
+
+	/**
 	 * Test the getCoordiate() function
 	 */
 	public function testCoordinate()
