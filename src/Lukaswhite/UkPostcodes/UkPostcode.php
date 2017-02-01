@@ -287,6 +287,16 @@ class UkPostcode {
 	}
 
 	/**
+	 * Magic method; returns a string representation of this postcode
+	 *
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->formatted( );
+	}
+
+	/**
 	 * Return a coordinate object for this postcode.
 	 *
 	 * @return League\Geotools\Coordinate\Coordinate

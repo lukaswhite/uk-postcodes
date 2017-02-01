@@ -106,4 +106,11 @@ class TestUkPostcodeClass extends \PHPUnit_Framework_TestCase {
 		
 	}
 
+	public function testToString( )
+	{
+		$postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw11 5ds');		
+		$this->assertEquals('SW11 5DS', $postcode->__toString());		
+		$this->assertEquals('SW11 5DS', ( string ) $postcode );		
+	}
+
 }
