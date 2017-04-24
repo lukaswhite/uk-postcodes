@@ -1,6 +1,6 @@
 <?php
 
-class TestUkPostcodeClass extends \PHPUnit_Framework_TestCase {
+class TestUkPostcodeClass extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * Test the class instantiation

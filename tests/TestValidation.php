@@ -1,6 +1,6 @@
 <?php
 
-class TestValidation extends \PHPUnit_Framework_TestCase {
+class TestValidation extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * Try some valid postcodes.
