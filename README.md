@@ -1,25 +1,27 @@
-#UK Postcodes
+# UK Postcodes
+
+[![CircleCI](https://circleci.com/gh/lukaswhite/uk-postcodes.svg?style=svg)](https://circleci.com/gh/lukaswhite/uk-postcodes)
 
 This package serves two purposes:
 
 1. A simple class which represents a UK Postcode and contains functionality such as formatting and validation.
 2. A wrapper for [this web service](http://www.uk-postcodes.com/api) for geocoding postcodes.
 
-##Installation
+## Installation
 
 Via Composer:
 
     "lukaswhite/uk-postcodes" : "dev-master"
 
-##UkPostcode Class
+## UkPostcode Class
 
 A simple class to encapsulate a UK postcode. While it's primarily used as the return format for the web service, it does have the odd use in itself.
 
-###Constructor
+### Constructor
 
     $postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw1a2aa');
 
-###Validation
+### Validation
         
     if ($postcode->isValid()) {
         // do something...
@@ -31,7 +33,7 @@ Alternatively, use the static method:
         // do something...
     }
 
-###Formatting
+### Formatting
 
     $postcode = new Lukaswhite\UkPostcodes\UkPostcode('sw1a2aa');
 
@@ -39,7 +41,7 @@ Alternatively, use the static method:
 
     // > "SW1A 2AA"
 
-###Outcodes
+### Outcodes
 
 The outcode is the first part of a UK postcode. To illustrate:
 
@@ -55,11 +57,11 @@ The outcode is the first part of a UK postcode. To illustrate:
     print $postcode->getOutcode();
     // GL9
 
-##The Web Service Client
+## The Web Service Client
 
 Provides wrapper for [this web service](http://www.uk-postcodes.com/api) for geocoding postcodes.
 
-###Geocoding a Postcode
+### Geocoding a Postcode
 
 It's probably easiest to demonstrate the usage through an example:
 
@@ -104,7 +106,7 @@ It's probably easiest to demonstrate the usage through an example:
 
 If the postcode cannot be found for whatever reason, it'll simply return NULL.
 
-###Nearest Postcode
+### Nearest Postcode
 
 You can get the nearest postcode to a given point using `getNearest()`.
 
@@ -121,7 +123,7 @@ Specify the point using either an instance of `League\Geotools\Coordinate\Coordi
 
     // SW1A 2AA
 
-###Postcodes within x miles
+### Postcodes within x miles
 
 Get the postcodes within x miles of a given point using `getWithin()`.  First parameter is a point, second is the number of miles (5 miles maxiumum).
 
@@ -134,11 +136,11 @@ Get the postcodes within x miles of a given point using `getWithin()`.  First pa
 
     // returns an array of all postcodes within 3 miles of Lat 51.503539898876, Long -0.12768084037293
 
-##Testing
+## Testing
 
 There are a bunch of unit tests (PHPUnit) in `/tests`.
 
-##Todo
+## Todo
 
 Better error handling.
 
