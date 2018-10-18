@@ -1,5 +1,7 @@
 # UK Postcodes
 
+> This package has been effectively replaced by [a newer version](https://github.com/lukaswhite/uk-postcode). However, it does **not include** the web service; it's simply a single class.
+
 [![CircleCI](https://circleci.com/gh/lukaswhite/uk-postcodes.svg?style=svg)](https://circleci.com/gh/lukaswhite/uk-postcodes)
 
 This package serves two purposes:
